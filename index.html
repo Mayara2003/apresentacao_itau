@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayara Marques | Portfolio Itaú</title>
+    
+    <!-- Tailwind para estrutura e utilitários -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Biblioteca de ícones (Font Awesome) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+        :root {
+            --itau-orange: #EC7000;
+            --itau-blue-dark: #003366;
+            --itau-blue-light: #004691;
+            --itau-bg: #0d0d0d;
+            --itau-card: #161616;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--itau-bg);
+            color: #ffffff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .itau-gradient-text {
+            background: linear-gradient(90deg, #ffffff, var(--itau-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-img-container {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--itau-orange);
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(236, 112, 0, 0.3);
+            background: #232323;
+        }
+
+        .terminal-header {
+            background: #232323;
+            border-radius: 8px 8px 0 0;
+            padding: 10px 15px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot { height: 10px; width: 10px; border-radius: 50%; }
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        .exp-tab {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .exp-tab.active {
+            background: rgba(236, 112, 0, 0.15);
+            border-left: 4px solid var(--itau-orange);
+            color: var(--itau-orange);
+            font-weight: 700;
+        }
+
+        .tech-badge {
+            background: rgba(236, 112, 0, 0.05);
+            border: 1px solid rgba(236, 112, 0, 0.2);
+            color: #f1f1f1;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .typing::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        .btn-principal {
+            background-color: var(--itau-orange);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 2px;
+            transition: transform 0.2s;
+        }
+        .btn-principal:hover { transform: scale(1.05); }
+
+        .exp-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGAÇÃO -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-bold text-xl tracking-tighter">
+                MAYARA<span class="text-[var(--itau-orange)]">.</span>MARQUES
+            </div>
+            <div class="hidden md:flex space-x-8 text-[10px] font-bold uppercase tracking-[0.2em] items-center">
+                <a href="#sobre" class="hover:text-[var(--itau-orange)] transition">Bio</a>
+                <a href="#experiencia" class="hover:text-[var(--itau-orange)] transition">Trajetória</a>
+                <a href="#itau-context" class="hover:text-[var(--itau-orange)] transition">Cultura</a>
+                <a href="#contato" class="btn-principal">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CABEÇALHO (HERO) -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="max-w-6xl w-full grid md:grid-cols-2 gap-16 items-center">
+            
+            <div class="scroll-reveal active">
+                <h2 class="text-[var(--itau-orange)] font-mono text-sm mb-4 tracking-widest uppercase">Evolução Digital</h2>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                    Analista de <br>
+                    <span class="itau-gradient-text" id="typing-text"></span>
+                </h1>
+                <p class="text-gray-400 text-lg mb-10 max-w-lg leading-relaxed">
+                    Pode me chamar de May. Nesta apresentação, compartilho quem eu sou e um resumo das minhas experiências de trabalho
+                </p>
+                <div class="flex gap-4">
+                    <a href="#experiencia" class="bg-white text-black px-8 py-3 font-bold uppercase text-xs tracking-widest hover:bg-gray-200 transition">Carreira</a>
+                    <a href="#contato" class="border border-orange-600/30 px-8 py-3 font-bold uppercase text-xs tracking-widest hover:bg-orange-600/10 transition">Conectar</a>
+                </div>
+            </div>
+
+            <!-- Perfil estilo Terminal -->
+            <div class="hidden md:block">
+                <div class="glass-card p-8 rounded-xl border-l-4 border-l-[var(--itau-orange)] shadow-2xl">
+                    <div class="mb-6 flex justify-between items-start">
+                        <div class="flex flex-col gap-4">
+                            <div class="profile-img-container">
+                                <img src="images/fotolinkedin.jpg" 
+                                     alt="Mayara Marques" 
+                                     class="w-full h-full object-cover"
+                                     onerror="this.src='https://ui-avatars.com/api/?name=Mayara+Marques&background=EC7000&color=fff'">
+                            </div>
+                            <span class="text-xs font-mono text-gray-500">mayara_profile.sys</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <span class="w-3 h-3 rounded-full bg-orange-500/20"></span>
+                            <i class="fas fa-microchip text-[var(--itau-orange)]"></i>
+                        </div>
+                    </div>
+                    <div class="space-y-4 font-mono text-sm">
+                        <p><span class="text-blue-400">➜ location:</span> <span class="text-orange-300">"Butantã, SP"</span></p>
+                        <p><span class="text-blue-400">➜ age:</span> <span class="text-orange-300">22</span></p>
+                        <p><span class="text-blue-400">➜ education:</span> <span class="text-gray-300">["ADS Impacta", "PROA", "ETEC"]</span></p>
+                        <p><span class="text-blue-400">➜ status:</span> <span class="text-green-400">"Pronta para o Itaú"</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE MIM -->
+    <section id="sobre" class="py-24 px-6 bg-white text-black">
+        <div class="max-w-5xl mx-auto scroll-reveal">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-6">
+                    <span class="text-[var(--itau-orange)] font-bold tracking-[0.3em] uppercase text-xs">A Jornada</span>
+                    <h2 class="text-4xl font-black uppercase tracking-tighter">Foco em Performance</h2>
+                    <p class="text-gray-600">
+                        Iniciei meu caminho na <b>ETEC Basilides de Godoy</b>, onde a paixão por tecnologia se tornou profissão ao desenvolver sistemas robustos de gestão.
+                    </p>
+                    <p class="text-gray-600">
+                        Pelo <b>Instituto PROA</b>, especializei-me em Desenvolvimento Web, unindo o rigor técnico da programação Java com a visão estratégica de negócios necessária para grandes instituições.
+                    </p>
+                </div>
+                <!-- Stack de Ferramentas -->
+                <div class="bg-[var(--itau-blue-dark)] p-8 rounded-lg text-white shadow-xl">
+                    <h3 class="text-sm font-bold mb-6 text-orange-400 uppercase tracking-widest">Stack de Ferramentas</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge">SQL Server</span>
+                        <span class="tech-badge">Azure DevOps</span>
+                        <span class="tech-badge">HTML</span>
+                        <span class="tech-badge">CSS</span>
+                        <span class="tech-badge">Javascript</span>
+                        <span class="tech-badge">Tailwind</span>
+                        <span class="tech-badge">Infraestrutura de Rede</span>
+                        <span class="tech-badge">Sistemas de Transmissão</span>
+                        <span class="tech-badge">Levantamento de Requisitos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CULTURA -->
+    <section id="itau-context" class="py-24 px-6 bg-[var(--itau-blue-dark)] text-white">
+        <div class="max-w-4xl mx-auto scroll-reveal">
+            <div class="text-center mb-16">
+                <span class="text-[var(--itau-orange)] font-bold tracking-[0.3em] uppercase text-xs">Propósito</span>
+                <h2 class="text-4xl font-black uppercase tracking-tighter mt-2">Cultura & Conexão</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 text-gray-300">
+                <div class="space-y-6">
+                    <p>O Itaú é uma empresa que sempre almejei para construir uma carreira, porque existe o trabalho em equipe, a cultura de ensinar e ajudar.</p>
+                    <p>Busco uma nova oportunidade profissional porque quero evoluir cada vez mais. Vejo o Itaú como uma empresa que impulsiona transformation tecnológica e crescimento de carreira.</p>
+                </div>
+                <div class="space-y-6">
+                    <p>Tenho colegas de curso que trabalham no Itaú e até brincam dizendo que estão me esperando por lá. Eles sempre compartilham a cultura do banco e isso me faz sentir pertencente.</p>
+                    <p class="font-bold text-[var(--itau-orange)] border-t border-white/10 pt-6">Agradeço desde já por dedicarem um tempo para me conhecer, isso já faz toda a diferença.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIÊNCIAS -->
+    <section id="experiencia" class="py-24 px-6 bg-[var(--itau-bg)]">
+        <div class="max-w-5xl mx-auto scroll-reveal">
+            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Histórico Profissional</h2>
+            
+            <div class="glass-card rounded-xl overflow-hidden">
+                <div class="terminal-header">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row">
+                    <!-- Abas Laterais -->
+                    <div class="flex md:flex-col border-b md:border-b-0 md:border-r border-white/5 w-full md:w-64">
+                        <div onclick="showExp('jp')" class="exp-tab px-6 py-5 text-[10px] font-bold uppercase tracking-widest" id="tab-jp">Jovem Pan</div>
+                        <div onclick="showExp('orbia')" class="exp-tab px-6 py-5 text-[10px] font-bold uppercase tracking-widest" id="tab-orbia">Orbia</div>
+                        <div onclick="showExp('oico')" class="exp-tab px-6 py-5 text-[10px] font-bold uppercase tracking-widest" id="tab-oico">Oico</div>
+                    </div>
+
+                    <!-- Conteúdo Dinâmico -->
+                    <div class="p-10 flex-1 min-h-[500px]" id="exp-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer id="contato" class="py-24 px-6 bg-black text-white text-center">
+        <div class="max-w-4xl mx-auto scroll-reveal">
+            <h2 class="text-5xl font-black mb-12 uppercase tracking-tighter">Vamos Inovar juntos?</h2>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="https://www.linkedin.com/in/mayara-marques-95389a1b3/" target="_blank" class="btn-principal flex items-center gap-3">
+                    <i class="fab fa-linkedin text-lg"></i> LinkedIn
+                </a>
+                <a href="https://wa.me/5511965665808" target="_blank" class="border border-white/10 px-12 py-4 font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-white/5 transition flex items-center gap-3">
+                    <i class="fab fa-whatsapp text-lg"></i> WhatsApp
+                </a>
+            </div>
+            <div class="mt-32 pt-10 border-t border-white/5 text-[9px] text-gray-600 uppercase tracking-[0.8em]">
+                Mayara Marques &bull; São Paulo &bull; 2025
+            </div>
+        </div>
+    </footer>
+
+    <!-- LÓGICA JAVASCRIPT COMENTADA LOGICAMENTE -->
+    <script>
+        /**
+         * Este objeto serve como o "Banco de Dados" do site.
+         * Ele centraliza todas as informações das empresas em um só lugar
+         * para que o código seja fácil de atualizar sem precisar mexer no HTML.
+         */
+        const experiences = {
+            jp: {
+                role: "Analista de TI de Transmissão",
+                company: "Jovem Pan News",
+                period: "2025 — Presente",
+                image: "images/jovempan.png",
+                desc: "Atuação direta na infraestrutura crítica para transmissões ao vivo.",
+                bullets: [
+                    "Manutenção de infraestrutura de rede e servidores;",
+                    "Suporte técnico e resolução de problemas;",
+                    "Gestão de sistemas de transmissão e equipamentos de vídeo;",
+                    "Monitoramento e segurança de rede;",
+                    "Gestão de dados e armazenamento de mídia;",
+                    "Implementação de soluções técnicas e inovações;",
+                    "Apoio às equipes de produção e engenharia;",
+                    "Treinamento de usuários e gestão de licenças."
+                ]
+            },
+            orbia: {
+                role: "Analista de Sistemas",
+                company: "Orbia",
+                period: "2023 — 2024",
+                image: "images/orbia.png",
+                desc: "Foco em análise de requisitos e gestão de ferramentas ágeis.",
+                bullets: [
+                    "Análise de requisitos de sistema.",
+                    "Manipulação de dados e relatórios.",
+                    "Criação de dashboards no Azure DevOps.",
+                    "Suporte a usuários internos e externos.",
+                    "Gerenciamento de permissões de acesso.",
+                    "Uso de Jira e Azure para otimização de resultados.",
+                    "Priorização de bugs."
+                ]
+            },
+            oico: {
+                role: "Analista de Sistemas",
+                company: "Oico",
+                period: "2022 — 2023",
+                image: "images/oico.jpg",
+                desc: "Ponte estratégica entre requisitos de negócio e desenvolvimento técnico.",
+                bullets: [
+                    "Análise e levantamento de requisitos de sistemas.",
+                    "Consulta e manipulação de dados.",
+                    "Criação de relatórios e dashboards (Azure DevOps).",
+                    "Melhoria contínua de sistemas e processos internos.",
+                    "Condução de cerimônias de Product Owner (PO).",
+                    "Facilitação de comunicação entre equipes e stakeholders.",
+                    "Suporte a usuários internos e externos."
+                ]
+            }
+        };
+
+        /**
+         * Esta função serve para atualizar o conteúdo da seção "Experiência".
+         * Quando você clica em uma aba, ela limpa o texto antigo e coloca
+         * as informações da empresa correspondente que estão no objeto acima.
+         */
+        function showExp(id) {
+            // Pega as informações da empresa certa no nosso "banco de dados"
+            const exp = experiences[id];
+            // Identifica o local no HTML onde o texto deve ser escrito
+            const content = document.getElementById('exp-content');
+            
+            // Serve para mudar a cor da aba clicada, dando um feedback visual ao usuário
+            document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(`tab-${id}`).classList.add('active');
+
+            // Serve para construir e "injetar" o novo texto e imagem dentro do site
+            content.innerHTML = `
+                <div class="animate-fadeIn">
+                    <img src="${exp.image}" alt="${exp.company}" class="exp-image" onerror="this.style.display='none'">
+                    
+                    <h3 class="text-2xl font-black uppercase text-white">${exp.role}</h3>
+                    <p class="text-[var(--itau-orange)] font-bold text-xs mt-1">@ ${exp.company} | ${exp.period}</p>
+                    <p class="text-sm text-gray-400 my-6">${exp.desc}</p>
+                    
+                    <ul class="space-y-4">
+                        ${exp.bullets.map(b => `
+                            <li class="flex items-start gap-4 text-xs text-gray-300">
+                                <span class="text-[var(--itau-orange)] mt-1 font-bold">»</span>
+                                <span>${b}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        /**
+         * Esta função serve para criar o efeito de "texto digitando".
+         * Ela escreve uma letra por vez, espera um pouco, e depois apaga
+         * para escrever a próxima palavra da lista 'phrases'.
+         */
+        const phrases = ["Sistemas.", "Infraestrutura.", "Dados.", "Soluções."];
+        let i = 0, j = 0, current = "", deleting = false;
+        
+        function type() {
+            // Serve para saber qual palavra da lista estamos escrevendo agora
+            current = phrases[i];
+            
+            // Serve para decidir se vamos adicionar uma letra ou remover uma letra
+            const text = deleting ? current.substring(0, j--) : current.substring(0, j++);
+            document.getElementById('typing-text').textContent = text;
+            
+            // Serve para controlar o tempo entre escrever e apagar
+            if (!deleting && j > current.length) { 
+                deleting = true; 
+                setTimeout(type, 1800); // Espera 1.8 segundos quando a palavra está completa
+            } else if (deleting && j === 0) { 
+                deleting = false; 
+                i = (i + 1) % phrases.length; // Passa para a próxima palavra da lista
+                setTimeout(type, 400); 
+            } else {
+                // Controla a velocidade da digitação
+                setTimeout(type, deleting ? 40 : 120);
+            }
+        }
+
+        /**
+         * Esta função serve para fazer os elementos do site "aparecerem" conforme você desce a página.
+         * Ela verifica se o bloco já está visível na tela e, se estiver, aciona a animação de subida.
+         */
+        function reveal() {
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                // Serve para medir a distância do elemento até o topo da janela
+                const rect = el.getBoundingClientRect();
+                // Se o elemento estiver aparecendo na tela, adiciona a classe que faz a mágica
+                if (rect.top < window.innerHeight - 80) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        /**
+         * Estes comandos servem para ligar as funções assim que o site abre.
+         */
+        // Serve para vigiar o movimento da barra de rolagem
+        window.addEventListener('scroll', reveal);
+        
+        // Serve para iniciar as animações e o conteúdo inicial assim que o navegador terminar de carregar
+        window.onload = () => { 
+            showExp('jp'); 
+            type();        
+            reveal();      
+        };
+    </script>
+
+    <style>
+        .animate-fadeIn { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateX(10px); } 
+            to { opacity: 1; transform: translateX(0); } 
+        }
+    </style>
+</body>
+</html>
