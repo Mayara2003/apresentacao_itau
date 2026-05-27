@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mayara Marques | Portfolio</title>
+    <title>Mayara Marques | Portfólio Profissional</title>
     
     <!-- Tailwind para estrutura e utilitários -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,26 +12,26 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap');
 
         :root {
-            --itau-orange: #EC7000;
-            --itau-blue-dark: #003366;
-            --itau-blue-light: #004691;
-            --itau-bg: #0d0d0d;
-            --itau-card: #161616;
+            --primary-orange: #EC7000;
+            --bg-dark: #0d0d0d;
+            --card-dark: #161616;
+            --bg-light-mineral: #f8fafc;
+            --text-dark-slate: #0f172a;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--itau-bg);
+            background-color: var(--bg-dark);
             color: #ffffff;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        .itau-gradient-text {
-            background: linear-gradient(90deg, #ffffff, var(--itau-orange));
+        .tech-gradient-text {
+            background: linear-gradient(90deg, #ffffff, var(--primary-orange));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -40,13 +40,19 @@
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(236, 112, 0, 0.3);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .profile-img-container {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            border: 2px solid var(--itau-orange);
+            border: 2px solid var(--primary-orange);
             overflow: hidden;
             box-shadow: 0 0 20px rgba(236, 112, 0, 0.3);
             background: #232323;
@@ -58,6 +64,7 @@
             padding: 10px 15px;
             display: flex;
             gap: 8px;
+            align-items: center;
         }
 
         .dot { height: 10px; width: 10px; border-radius: 50%; }
@@ -67,24 +74,39 @@
 
         .exp-tab {
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            color: #94a3b8;
+        }
+        
+        .exp-tab:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.02);
         }
         
         .exp-tab.active {
-            background: rgba(236, 112, 0, 0.15);
-            border-left: 4px solid var(--itau-orange);
-            color: var(--itau-orange);
+            background: rgba(236, 112, 0, 0.1);
+            border-left: 4px solid var(--primary-orange);
+            color: var(--primary-orange);
             font-weight: 700;
         }
 
+        /* Estilo das Badges Escuras Originais para a Stack */
         .tech-badge {
             background: rgba(236, 112, 0, 0.05);
             border: 1px solid rgba(236, 112, 0, 0.2);
             color: #f1f1f1;
-            padding: 4px 12px;
-            border-radius: 4px;
+            padding: 6px 14px;
+            border-radius: 6px;
             font-size: 0.75rem;
             font-family: 'Fira Code', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: rgba(236, 112, 0, 0.15);
+            border-color: var(--primary-orange);
+            color: var(--primary-orange);
+            transform: translateY(-2px);
         }
 
         .scroll-reveal {
@@ -105,17 +127,22 @@
         @keyframes blink { 50% { opacity: 0; } }
         
         .btn-principal {
-            background-color: var(--itau-orange);
+            background-color: var(--primary-orange);
             color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
+            padding: 10px 22px;
+            border-radius: 6px;
             font-weight: bold;
             text-transform: uppercase;
             font-size: 10px;
             letter-spacing: 2px;
-            transition: transform 0.2s;
+            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(236, 112, 0, 0.2);
         }
-        .btn-principal:hover { transform: scale(1.05); }
+        .btn-principal:hover { 
+            transform: scale(1.03);
+            background-color: #ff851a;
+            box-shadow: 0 6px 16px rgba(236, 112, 0, 0.35);
+        }
 
         .exp-image {
             width: 100%;
@@ -125,6 +152,35 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 20px;
         }
+
+        .animate-fadeIn { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateX(10px); } 
+            to { opacity: 1; transform: translateX(0); } 
+        }
+
+        .atitude-card {
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        .atitude-card:hover {
+            transform: translateY(-4px);
+            border-left-color: var(--primary-orange);
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+        }
+
+        .cert-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .cert-card:hover {
+            border-color: var(--primary-orange);
+            transform: translateY(-2px);
+            background: rgba(236, 112, 0, 0.03);
+        }
     </style>
 </head>
 <body>
@@ -133,42 +189,59 @@
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="font-bold text-xl tracking-tighter">
-                MAYARA<span class="text-[var(--itau-orange)]">.</span>MARQUES
+                MAYARA<span class="text-[var(--primary-orange)]">.</span>MARQUES
             </div>
+            
+            <!-- Links para Desktop -->
             <div class="hidden md:flex space-x-8 text-[10px] font-bold uppercase tracking-[0.2em] items-center">
-                <a href="#sobre" class="hover:text-[var(--itau-orange)] transition">Bio</a>
-                <a href="#experiencia" class="hover:text-[var(--itau-orange)] transition">Trajetória</a>
-                <a href="#context" class="hover:text-[var(--itau-orange)] transition">Cultura</a>
+                <a href="#visao" class="hover:text-[var(--primary-orange)] transition">Visão</a>
+                <a href="#formacao" class="hover:text-[var(--primary-orange)] transition">Formação</a>
+                <a href="#certificacoes" class="hover:text-[var(--primary-orange)] transition">Certificações</a>
+                <a href="#experiencia" class="hover:text-[var(--primary-orange)] transition">Trajetória</a>
                 <a href="#contato" class="btn-principal">Contato</a>
             </div>
+
+            <!-- Botão do Menu Mobile (Hamburguer) -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none p-2" aria-label="Abrir Menu">
+                <i class="fas fa-bars text-xl hover:text-[var(--primary-orange)] transition"></i>
+            </button>
+        </div>
+
+        <!-- Menu Lateral/Mobile Gaveta -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-white/5 px-6 py-4 space-y-4">
+            <a href="#visao" class="block text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-[var(--primary-orange)] transition py-2">Visão</a>
+            <a href="#formacao" class="block text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-[var(--primary-orange)] transition py-2">Formação</a>
+            <a href="#certificacoes" class="block text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-[var(--primary-orange)] transition py-2">Certificações</a>
+            <a href="#experiencia" class="block text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-[var(--primary-orange)] transition py-2">Trajetória</a>
+            <a href="#contato" class="block text-center btn-principal py-3 mt-4">Contato</a>
         </div>
     </nav>
 
     <!-- CABEÇALHO (HERO) -->
-    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
-        <div class="max-w-6xl w-full grid md:grid-cols-2 gap-16 items-center">
+    <section class="min-h-screen flex items-center justify-center px-4 sm:px-6 pt-20">
+        <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             
             <div class="scroll-reveal active">
-                <h2 class="text-[var(--itau-orange)] font-mono text-sm mb-4 tracking-widest uppercase">Evolução Digital</h2>
-                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                <h2 class="text-[var(--primary-orange)] font-mono text-sm mb-4 tracking-widest uppercase font-semibold">Evolução Digital</h2>
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
                     Analista de <br>
-                    <span class="itau-gradient-text" id="typing-text"></span>
+                    <span class="tech-gradient-text" id="typing-text"></span>
                 </h1>
-                <p class="text-gray-400 text-lg mb-10 max-w-lg leading-relaxed">
-                    Pode me chamar de May. Nesta apresentação, compartilho quem eu sou e um resumo das minhas experiências de trabalho.
+                <p class="text-gray-400 text-base sm:text-lg mb-10 max-w-lg leading-relaxed">
+                    Pode me chamar de May. Sou apaixonada por tecnologia e por criar soluções inteligentes que otimizem processos corporativos, conectando infraestrutura de TI, dados e governança em ecossistemas de alta escala.
                 </p>
-                <div class="flex gap-4">
-                    <a href="#experiencia" class="bg-white text-black px-8 py-3 font-bold uppercase text-xs tracking-widest hover:bg-gray-200 transition">Carreira</a>
-                    <a href="#contato" class="border border-orange-600/30 px-8 py-3 font-bold uppercase text-xs tracking-widest hover:bg-orange-600/10 transition">Conectar</a>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#experiencia" class="bg-white text-black px-6 sm:px-8 py-3 font-bold uppercase text-xs tracking-widest hover:bg-gray-200 transition rounded shadow-sm">Carreira</a>
+                    <a href="#contato" class="border border-orange-600/30 px-6 sm:px-8 py-3 font-bold uppercase text-xs tracking-widest hover:bg-orange-600/10 transition rounded">Conectar</a>
                 </div>
             </div>
 
             <!-- Perfil estilo Terminal -->
             <div class="hidden md:block">
-                <div class="glass-card p-8 rounded-xl border-l-4 border-l-[var(--itau-orange)] shadow-2xl">
+                <div class="glass-card p-8 rounded-xl border-l-4 border-l-[var(--primary-orange)] shadow-2xl">
                     <div class="mb-6 flex justify-between items-start">
                         <div class="flex flex-col gap-4">
-                            <div class="profile-img-container">
+                            <div class="profile-img-container shadow-orange-500/10">
                                 <img src="images/fotolinkedin.jpg" 
                                      alt="Mayara Marques" 
                                      class="w-full h-full object-cover"
@@ -178,118 +251,281 @@
                         </div>
                         <div class="flex gap-2">
                             <span class="w-3 h-3 rounded-full bg-orange-500/20"></span>
-                            <i class="fas fa-microchip text-[var(--itau-orange)]"></i>
+                            <i class="fas fa-microchip text-[var(--primary-orange)] text-xl"></i>
                         </div>
                     </div>
                     <div class="space-y-4 font-mono text-sm">
-                        <p><span class="text-blue-400">➜ location:</span> <span class="text-orange-300">"Butantã, SP"</span></p>
-                        <p><span class="text-blue-400">➜ age:</span> <span class="text-orange-300">22</span></p>
+                        <p><span class="text-blue-400">➜ location:</span> <span class="text-orange-300">"São Paulo, SP"</span></p>
+                        <p><span class="text-blue-400">➜ age:</span> <span class="text-orange-300">22 anos</span></p>
                         <p><span class="text-blue-400">➜ education:</span> <span class="text-gray-300">["ADS Impacta", "PROA", "ETEC"]</span></p>
-                        <p><span class="text-blue-400">➜ status:</span> <span class="text-green-400">"Pronta para para o novo!"</span></p>
+                        <p><span class="text-blue-400">➜ status:</span> <span class="text-green-400">"Disponível para novos desafios"</span></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SOBRE MIM -->
-    <section id="sobre" class="py-24 px-6 bg-white text-black">
+    <!-- FUSÃO UNIFICADA: VISÃO PROFISSIONAL & PERFORMANCE (FUNDO CLARO E SEM EXCESSO DE LARANJA) -->
+    <section id="visao" class="py-24 px-4 sm:px-6 bg-slate-100 text-slate-900 relative overflow-hidden border-t border-b border-slate-200">
         <div class="max-w-5xl mx-auto scroll-reveal">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="text-center mb-16">
+                <span class="text-[var(--primary-orange)] font-bold tracking-[0.3em] uppercase text-xs">Metodologia & Propósito</span>
+                <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tighter mt-2 text-slate-900">Visão Profissional & Performance</h2>
+                <div class="h-1 w-20 bg-[var(--primary-orange)] mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 mb-16 items-start">
                 <div class="space-y-6">
-                    <span class="text-[var(--itau-orange)] font-bold tracking-[0.3em] uppercase text-xs">A Jornada</span>
-                    <h2 class="text-4xl font-black uppercase tracking-tighter">Foco em Performance</h2>
-                    <p class="text-gray-600">
-                        Iniciei meu caminho na <b>ETEC Basilides de Godoy</b>, onde a paixão por tecnologia se tornou profissão ao desenvolver sistemas robustos de gestão.
+                    <h3 class="text-xl font-bold uppercase tracking-tight text-slate-800 flex items-center gap-2">
+                        <i class="fas fa-chart-line text-[var(--primary-orange)]"></i> Foco em Performance & Soluções
+                    </h3>
+                    <p class="text-base sm:text-lg leading-relaxed font-light text-slate-600">
+                        Gosto de simplificar fluxos operacionais. Administro infraestruturas de servidores e redes críticas (LAN, WAN, WLAN), unindo com governança, contribuindo para um bom andamento das atividades.
                     </p>
-                    <p class="text-gray-600">
-                        Pelo <b>Instituto PROA</b>, especializei-me em Desenvolvimento Web, unindo o rigor técnico da programação Java com a visão estratégica de negócios necessária para grandes instituições.
+                    <p class="text-base sm:text-lg leading-relaxed font-light text-slate-600">
+                        Destaco-me pela minha facilidade de adaptação, comunicação integrada com equipes multidisciplinares e forte perfil analítico. Estou em busca contínua de evolução de hard e soft skills em ambientes corporativos dinâmicos.
                     </p>
                 </div>
-                <!-- Stack de Ferramentas -->
-                <div class="bg-[var(--itau-bg)] p-8 rounded-lg text-white shadow-xl">
-                    <h3 class="text-sm font-bold mb-6 text-orange-400 uppercase tracking-widest">Stack de Ferramentas</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-badge">SQL Server</span>
-                        <span class="tech-badge">Azure DevOps</span>
-                        <span class="tech-badge">Hardware</span>
-                        <span class="tech-badge">Gestão e Gerenciamento de Sistemas</span>
-                        <span class="tech-badge">Desenvolvimento de documentação</span>
-                        <span class="tech-badge">Priorização de chamados(SLA)</span>
-                        <span class="tech-badge">Dashboards</span>
-                        <span class="tech-badge">Infraestrutura de Rede e Servidores</span>
-                        <span class="tech-badge">Monitoramento e Segurança de Redes</span>
-                        <span class="tech-badge">Sistemas de Transmissão</span>
-                        <span class="tech-badge">Levantamento de Requisitos</span>
-                        <span class="tech-badge">Gerenciamento de Dados e Armazenamento de Mídia</span>
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold uppercase tracking-tight text-slate-800 flex items-center gap-2">
+                        <i class="fas fa-gem text-[var(--primary-orange)]"></i> Diferenciais Estratégicos
+                    </h3>
+                    <p class="text-base sm:text-lg leading-relaxed font-light text-slate-600">
+                        Minha trajetória reúne competências sólidas na administração prática e suporte de redes e servidores. Minha gestão prioriza a organização de demandas e a comunicação clara entre times. Isso me permite atuar diretamente na mitigação de riscos e na resolução de incidentes técnicos cotidianos.
+                    </p>
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-[var(--primary-orange)] shadow-sm mt-4">
+                        <p class="font-bold text-slate-800 text-lg sm:text-xl italic">
+                            "Meu propósito profissional é simplificar arquiteturas de TI e fluxos operacionais, gerando entregas seguras, ágeis e estáveis."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tecnologias & Metodologias Integradas (Resgatado: Fundo Escuro com Badges Laranja Orginal) -->
+            <div class="bg-[#111] p-6 sm:p-8 rounded-lg text-white shadow-2xl mb-16 border border-white/5">
+                <h3 class="text-sm font-bold mb-6 text-orange-400 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fas fa-tools text-[var(--primary-orange)]"></i> Stack Tecnológica & Ferramental
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-badge">Metodologias Ágeis</span>
+                    <span class="tech-badge">Redes LAN/WAN/WLAN</span>
+                    <span class="tech-badge">TCP/IP & Wi-Fi</span>
+                    <span class="tech-badge">IAM Active Directory</span>
+                    <span class="tech-badge">SAM & Compliance</span>
+                    <span class="tech-badge">Cybersecurity & EDR</span>
+                    <span class="tech-badge">SQL Server</span>
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Azure DevOps & Jira</span>
+                    <span class="tech-badge">Governança SLA/OLA</span>
+                    <span class="tech-badge">Levantamento de Requisitos</span>
+                </div>
+            </div>
+
+            <!-- Pilares de Atuação Grid -->
+            <div class="border-t border-slate-200 pt-12">
+                <h3 class="text-lg sm:text-xl font-bold mb-8 text-center uppercase tracking-wider text-slate-700">Pilares de Atuação</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="p-6 rounded-lg atitude-card">
+                        <div class="text-2xl mb-3 text-[var(--primary-orange)]"><i class="fas fa-users"></i></div>
+                        <h4 class="font-bold text-lg mb-2 text-slate-800">Comunicação Cooperativa</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">Espírito colaborativo, desenvolvi minha comunicação pois é a chave para um bom entendimento e andamento de projetos.</p>
+                    </div>
+                    <div class="p-6 rounded-lg atitude-card">
+                        <div class="text-2xl mb-3 text-[var(--primary-orange)]"><i class="fas fa-bullseye"></i></div>
+                        <h4 class="font-bold text-lg mb-2 text-slate-800">Foco em SLA & Cliente</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">Atuação no suporte técnico, respeitando regras de negócio e na infraestrutura de rede e monitoramento de falhas, para o cumprimento ágil dos SLA's.</p>
+                    </div>
+                    <div class="p-6 rounded-lg atitude-card">
+                        <div class="text-2xl mb-3 text-[var(--primary-orange)]"><i class="fas fa-bolt"></i></div>
+                        <h4 class="font-bold text-lg mb-2 text-slate-800">Simplicidade & Governança</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">Uso de ferramentas ágeis como Jira, Dynamics 365 e Azure para converter problemas em processos controlados.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CULTURA -->
-    <section id="context" class="py-24 px-6 bg-[var(--itau-orange)] text-white">
-        <div class="max-w-4xl mx-auto scroll-reveal">
+    <!-- FORMAÇÃO ACADÊMICA -->
+    <section id="formacao" class="py-24 px-4 sm:px-6 bg-zinc-950 text-white border-b border-white/5">
+        <div class="max-w-5xl mx-auto scroll-reveal">
             <div class="text-center mb-16">
-                <span class="text-[var(--itau-bg)] font-bold tracking-[0.3em] uppercase text-xs">Propósito</span>
-                <h2 class="text-4xl font-black uppercase tracking-tighter mt-2">Cultura & Conexão</h2>
+                <span class="text-[var(--primary-orange)] font-bold tracking-[0.3em] uppercase text-xs">Evolução de Aprendizado</span>
+                <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tighter mt-2">Formação Acadêmica</h2>
             </div>
-            <div class="grid md:grid-cols-2 gap-12 text-gray-300">
-                <div class="space-y-6">
-                    <p>Gosto de trabalhar onde existe o trabalho em equipe, a cultura de ensinar e ajudar.</p>
-                    <p>Busco uma nova oportunidade profissional porque quero evoluir cada vez mais, em uma empresa que impulsiona transformação tecnológica e crescimento de carreira.</p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card Faculdade Impacta -->
+                <div class="glass-card p-6 sm:p-8 rounded-xl flex flex-col justify-between border-t-4 border-t-[var(--primary-orange)]">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-mono text-orange-400">Graduação</span>
+                            <i class="fas fa-graduation-cap text-lg text-gray-400"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-2">Análise e Desenvolvimento de Sistemas</h3>
+                        <p class="text-sm text-gray-400 mb-4">Faculdade Impacta de Tecnologia</p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex justify-between items-center text-xs">
+                        <span class="font-bold text-emerald-400 uppercase tracking-wider">Fev 2025 - Cursando</span>
+                        <span class="text-gray-500">SP</span>
+                    </div>
                 </div>
-                <div class="space-y-6">
-                    <p>Esses são pontos extremamente importantes para mim, pois acredito que onde há ensino há progresso duplo.</p>
-                    <p class="font-bold text-[var(--itau-bg)] border-t border-white/10 pt-6">Agradeço desde já por dedicarem um tempo para me conhecer, isso já faz toda a diferença.</p>
+
+                <!-- Card Instituto PROA -->
+                <div class="glass-card p-6 sm:p-8 rounded-xl flex flex-col justify-between border-t-4 border-t-blue-500">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-mono text-blue-400">Formação Técnica</span>
+                            <i class="fas fa-laptop-code text-lg text-gray-400"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-2">Desenvolvimento Web Full Stack Java</h3>
+                        <p class="text-sm text-gray-400 mb-4">Instituto PROA (SENAC)</p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex justify-between items-center text-xs">
+                        <span class="font-bold text-gray-400 uppercase tracking-wider">Fev 2022 - Jul 2022</span>
+                        <span class="text-gray-500">SP</span>
+                    </div>
+                </div>
+
+                <!-- Card ETEC -->
+                <div class="glass-card p-6 sm:p-8 rounded-xl flex flex-col justify-between border-t-4 border-t-gray-500">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-mono text-gray-400">Formação Técnica</span>
+                            <i class="fas fa-school text-lg text-gray-400"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-2">Técnico em Desenvolvimento de Sistemas</h3>
+                        <p class="text-sm text-gray-400 mb-4">ETEC Basilides de Godoy</p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex justify-between items-center text-xs">
+                        <span class="font-bold text-gray-400 uppercase tracking-wider">Fev 2021 - Jul 2022</span>
+                        <span class="text-gray-500">SP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICAÇÕES -->
+    <section id="certificacoes" class="py-24 px-4 sm:px-6 bg-[var(--bg-dark)] border-b border-white/5">
+        <div class="max-w-5xl mx-auto scroll-reveal">
+            <div class="text-center mb-16">
+                <span class="text-[var(--primary-orange)] font-bold tracking-[0.3em] uppercase text-xs">Validações Técnicas</span>
+                <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tighter mt-2">Certificações</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cert 1 -->
+                <div class="cert-card p-6 rounded-lg flex items-start gap-4">
+                    <div class="text-[var(--primary-orange)] text-2xl mt-1"><i class="fas fa-database"></i></div>
+                    <div>
+                        <h3 class="font-bold text-base text-white">Análise de Dados - SQL</h3>
+                        <p class="text-xs text-gray-400 font-mono mt-1">Oracle</p>
+                    </div>
+                </div>
+                <!-- Cert 2 -->
+                <div class="cert-card p-6 rounded-lg flex items-start gap-4">
+                    <div class="text-[var(--primary-orange)] text-2xl mt-1"><i class="fab fa-python"></i></div>
+                    <div>
+                        <h3 class="font-bold text-base text-white">Análise de Dados - Python</h3>
+                        <p class="text-xs text-gray-400 font-mono mt-1">Impacta Tecnologia</p>
+                    </div>
+                </div>
+                <!-- Cert 3 -->
+                <div class="cert-card p-6 rounded-lg flex items-start gap-4">
+                    <div class="text-[var(--primary-orange)] text-2xl mt-1"><i class="fas fa-project-diagram"></i></div>
+                    <div>
+                        <h3 class="font-bold text-base text-white">ITIL® 4 Foundation</h3>
+                        <p class="text-xs text-gray-400 font-mono mt-1">HSC Labs</p>
+                    </div>
+                </div>
+                <!-- Cert 4 -->
+                <div class="cert-card p-6 rounded-lg flex items-start gap-4">
+                    <div class="text-[var(--primary-orange)] text-2xl mt-1"><i class="fas fa-certificate"></i></div>
+                    <div>
+                        <h3 class="font-bold text-base text-white">ISO 20000-1</h3>
+                        <p class="text-xs text-gray-400 font-mono mt-1">HSC Labs</p>
+                    </div>
+                </div>
+                <!-- Cert 5 -->
+                <div class="cert-card p-6 rounded-lg flex items-start gap-4">
+                    <div class="text-[var(--primary-orange)] text-2xl mt-1"><i class="fas fa-shield-alt"></i></div>
+                    <div>
+                        <h3 class="font-bold text-base text-white">Cyber Security</h3>
+                        <p class="text-xs text-gray-400 font-mono mt-1">HSC Labs</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- EXPERIÊNCIAS -->
-    <section id="experiencia" class="py-24 px-6 bg-[var(--itau-bg)]">
+    <section id="experiencia" class="py-24 px-4 sm:px-6 bg-[var(--bg-dark)]">
         <div class="max-w-5xl mx-auto scroll-reveal">
-            <h2 class="text-3xl font-black uppercase tracking-tighter text-center mb-12">Histórico Profissional</h2>
+            <span class="block text-[var(--primary-orange)] font-bold tracking-[0.3em] uppercase text-xs text-center mb-2">Experiência</span>
+            <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tighter text-center mb-12">Histórico Profissional</h2>
             
-            <div class="glass-card rounded-xl overflow-hidden">
+            <div class="glass-card rounded-xl overflow-hidden shadow-2xl">
                 <div class="terminal-header">
                     <div class="dot red"></div>
                     <div class="dot yellow"></div>
                     <div class="dot green"></div>
+                    <span class="text-[10px] font-mono text-gray-500 ml-4">trajetoria_carreira.log</span>
                 </div>
                 
                 <div class="flex flex-col md:flex-row">
                     <!-- Abas Laterais -->
                     <div class="flex md:flex-col border-b md:border-b-0 md:border-r border-white/5 w-full md:w-64">
+                        <div onclick="showExp('fde')" class="exp-tab px-6 py-5 text-[10px] font-bold uppercase tracking-widest active" id="tab-fde">FDE</div>
                         <div onclick="showExp('jp')" class="exp-tab px-6 py-5 text-[10px] font-bold uppercase tracking-widest" id="tab-jp">Jovem Pan</div>
                         <div onclick="showExp('orbia')" class="exp-tab px-6 py-5 text-[10px] font-bold uppercase tracking-widest" id="tab-orbia">Orbia</div>
                         <div onclick="showExp('oico')" class="exp-tab px-6 py-5 text-[10px] font-bold uppercase tracking-widest" id="tab-oico">Oico</div>
                     </div>
 
                     <!-- Conteúdo Dinâmico -->
-                    <div class="p-10 flex-1 min-h-[500px]" id="exp-content">
+                    <div class="p-6 sm:p-10 flex-1 min-h-[480px]" id="exp-content">
+                        <!-- Gerado Dinamicamente pelo Javascript -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- RODAPÉ -->
-    <footer id="contato" class="py-24 px-6 bg-black text-white text-center">
+    <!-- RODAPÉ E CONTATO -->
+    <footer id="contato" class="py-24 px-4 sm:px-6 bg-black text-white text-center relative border-t border-white/5">
         <div class="max-w-4xl mx-auto scroll-reveal">
-            <h2 class="text-5xl font-black mb-12 uppercase tracking-tighter">Vamos Inovar juntos?</h2>
-            <div class="flex flex-wrap justify-center gap-6">
-                <a href="https://www.linkedin.com/in/mayara-marques-95389a1b3/" target="_blank" class="btn-principal flex items-center gap-3">
+            
+            <h2 class="text-4xl sm:text-5xl font-black mb-6 uppercase tracking-tighter">Vamos Conectar e Inovar?</h2>
+            <p class="text-gray-400 mb-12 max-w-lg mx-auto text-sm sm:text-base">
+                Fique à vontade para me contatar por meio dos meus canais profissionais de comunicação direta. Estou sempre aberta a novas oportunidades em engenharia de sistemas, redes e governança.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mb-16">
+                <a href="https://www.linkedin.com/in/mayara-marques-95389a1b3/" target="_blank" class="btn-principal flex items-center justify-center gap-3 px-8 sm:px-10 py-4 w-full sm:w-auto">
                     <i class="fab fa-linkedin text-lg"></i> LinkedIn
                 </a>
-                <a href="https://wa.me/5511965665808" target="_blank" class="border border-white/10 px-12 py-4 font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-white/5 transition flex items-center gap-3">
-                    <i class="fab fa-whatsapp text-lg"></i> WhatsApp
+                <a href="https://wa.me/5511965665808" target="_blank" class="border border-white/10 px-8 sm:px-10 py-4 font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-white/5 transition flex items-center justify-center gap-3 w-full sm:w-auto">
+                    <i class="fab fa-whatsapp text-lg text-green-500"></i> WhatsApp
                 </a>
             </div>
-            <div class="mt-32 pt-10 border-t border-white/5 text-[9px] text-gray-600 uppercase tracking-[0.8em]">
-                Mayara Marques &bull; São Paulo &bull; 2025
+
+            <!-- Informações adicionais de contato rápido -->
+            <div class="mt-12 text-gray-400 text-xs sm:text-sm font-mono space-y-4">
+                <p class="flex items-center justify-center gap-2 flex-wrap">
+                    <i class="fas fa-envelope text-[var(--primary-orange)]"></i>
+                    <span>mayararodriguesmarques2003@gmail.com</span>
+                </p>
+                <p class="flex items-center justify-center gap-2">
+                    <i class="fas fa-phone-alt text-[var(--primary-orange)]"></i>
+                    <span>(11) 96566-5808</span>
+                </p>
+                <p class="flex items-center justify-center gap-2 text-gray-500">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>São Paulo, SP — Butantã</span>
+                </p>
+            </div>
+
+            <div class="mt-24 pt-10 border-t border-white/5 text-[9px] text-gray-600 uppercase tracking-[0.8em] leading-relaxed">
+                Mayara Marques &bull; São Paulo &bull; 2026
             </div>
         </div>
     </footer>
@@ -297,91 +533,125 @@
     <!-- LÓGICA JAVASCRIPT COMENTADA LOGICAMENTE -->
     <script>
         /**
-         * Este objeto serve como o "Banco de Dados" do site.
-         * Ele centraliza todas as informações das empresas em um só lugar
-         * para que o código seja fácil de atualizar sem precisar mexer no HTML.
+         * Objeto central de dados profissionais (Experiências)
+         * Os dados e as datas de início e encerramento estão alinhados conforme o currículo.
          */
         const experiences = {
-            jp: {
-                role: "Analista de TI de Transmissão",
-                company: "Jovem Pan News",
-                period: "2025 — Presente",
-                image: "images/jovempan.png",
-                desc: "Atuação direta na infraestrutura crítica para transmissões ao vivo.",
+            fde: {
+                role: "Analista de TI",
+                company: "FDE - Fundação Desenvolvimento da Educação",
+                period: "Fev 2026 — Atual",
+                image: "images/fde.png", 
+                desc: "Administração e manutenção crítica de infraestruturas de TI, suporte e governança de serviços escolares em todo o Estado de São Paulo.",
                 bullets: [
-                    "Manutenção de infraestrutura de rede e servidores;",
-                    "Suporte técnico e resolução de problemas;",
-                    "Gestão de sistemas de transmissão e equipamentos de vídeo;",
-                    "Monitoramento e segurança de rede;",
-                    "Gestão de dados e armazenamento de mídia;",
-                    "Implementação de soluções técnicas e inovações;",
-                    "Apoio às equipes de produção e engenharia;",
-                    "Treinamento de usuários e gestão de licenças."
+                    "Atendimento de chamados técnicos, garantindo resolução ágil e eficiente;",
+                    "Aplicação de metodologias ágeis e análise de regras de negócio para otimização de processos;",
+                    "Administração e manutenção de redes (LAN, WAN, WLAN) de alta disponibilidade e conectividade Wi-Fi;",
+                    "Configuração e resolução de incidentes envolvendo o protocolo TCP/IP e conectividade de servidores;",
+                    "Gestão qualificada de ativos e inventário tecnológico com suporte em hardware e sistemas de software;",
+                    "Atuação direta em Governança de TI (SLA/OLA) para controle e otimização dos acordos de serviços;",
+                    "Implementação de políticas de segurança cibernética com ferramentas de antivírus/EDR, backups e disaster recovery."
+                ]
+            },
+            jp: {
+                role: "Analista de TI",
+                company: "Jovem Pan News",
+                period: "Fev 2025 — Jan 2026",
+                image: "images/jovempan.png", 
+                desc: "Gestão operacional e engenharia de TI em ambiente de mídia de transmissão de alto fluxo.",
+                bullets: [
+                    "Atendimento de chamados e suporte técnico especializado;",
+                    "Aplicação de metodologias ágeis para gestão de demandas e regras de negócio corporativas;",
+                    "Administração e monitoramento contínuo de servidores e redes de mídia (LAN/WAN/WLAN) de alta performance;",
+                    "Gerenciamento de identidades e acessos seguros (IAM) através do Active Directory corporativo;",
+                    "Implementação estruturada de controle de licenças de software (SAM/Compliance) e auditoria de recursos;",
+                    "Gerenciamento operacional de sistemas de transmissão inteligente, encoders e fluxo de sinais de vídeo;",
+                    "Coordenação de armazenamento massivo de dados de transmissão (NAS/SAN) e fluxos seguros de ingest."
                 ]
             },
             orbia: {
                 role: "Analista de Sistemas",
                 company: "Orbia",
-                period: "2023 — 2024",
-                image: "images/orbia.png",
-                desc: "Foco em análise de requisitos e gestão de ferramentas ágeis.",
+                period: "Out 2023 — Dez 2024",
+                image: "images/orbia.png", 
+                desc: "Análise estratégica de requisitos operacionais de plataforma, monitoramento de qualidade de software e consolidação de dados de negócios.",
                 bullets: [
-                    "Análise de requisitos de sistema.",
-                    "Manipulação de dados e relatórios.",
-                    "Criação de dashboards no Azure DevOps.",
-                    "Suporte a usuários internos e externos.",
-                    "Gerenciamento de permissões de acesso.",
-                    "Uso de Jira e Azure para otimização de resultados.",
-                    "Priorização de bugs."
+                    "Levantamento de requisitos operacionais, geração de relatórios gerenciais e dashboards estratégicos;",
+                    "Consulta e manipulação de base de dados operacionais utilizando SQL Server;",
+                    "Apoio em Suporte Nível 2 especializado para a resolução assertiva de incidentes técnicos para públicos internos e externos;",
+                    "Identificação cirúrgica, documentação de bugs na plataforma e gerenciamento de acessos e permissões de credenciais;",
+                    "Colaboração ativa através de metodologias ágeis integradas utilizando as ferramentas Jira e Azure Boards."
                 ]
             },
             oico: {
                 role: "Analista de Sistemas",
                 company: "Oico",
                 period: "2022 — 2023",
-                image: "images/oico.jpg",
-                desc: "Ponte estratégica entre requisitos de negócio e desenvolvimento técnico.",
+                image: "images/oico.jpg", 
+                desc: "Ponte estratégica de comunicação entre as necessidades complexas de negócio, faturamento, logística e desenvolvimento de software.",
                 bullets: [
-                    "Análise e levantamento de requisitos de sistemas.",
-                    "Consulta e manipulação de dados.",
-                    "Criação de relatórios e dashboards (Azure DevOps).",
-                    "Melhoria contínua de sistemas e processos internos.",
-                    "Condução de cerimônias de Product Owner (PO).",
-                    "Facilitação de comunicação entre equipes e stakeholders.",
-                    "Suporte a usuários internos e externos."
+                    "Análise e levantamento detalhado de requisitos de sistemas para fluxos internos e externos;",
+                    "Manipulação e consulta de base de dados relacionais utilizando SQL Server;",
+                    "Modelagem de dashboards operacionais e relatórios de progresso no Azure DevOps;",
+                    "Facilitação de cerimônias ágeis como Product Owner (PO) e comunicação contínua entre stakeholders e times técnicos;",
+                    "Apoio ao mapeamento e melhoria de processos internos de faturamento corporativo e logística de entrega."
                 ]
             }
         };
 
         /**
-         * Esta função serve para atualizar o conteúdo da seção "Experiência".
-         * Quando você clica em uma aba, ela limpa o texto antigo e coloca
-         * as informações da empresa correspondente que estão no objeto acima.
+         * Menu responsivo mobile (Mecânica de Alternância)
+         */
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.className = 'fas fa-bars text-xl hover:text-[var(--primary-orange)] transition';
+            } else {
+                icon.className = 'fas fa-times text-xl hover:text-[var(--primary-orange)] transition';
+            }
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuBtn.querySelector('i').className = 'fas fa-bars text-xl hover:text-[var(--primary-orange)] transition';
+            });
+        });
+
+        /**
+         * Exibição e renderização do conteúdo das abas de experiências
          */
         function showExp(id) {
-            // Pega as informações da empresa certa no nosso "banco de dados"
             const exp = experiences[id];
-            // Identifica o local no HTML onde o texto deve ser escrito
             const content = document.getElementById('exp-content');
             
-            // Serve para mudar a cor da aba clicada, dando um feedback visual ao usuário
             document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
             document.getElementById(`tab-${id}`).classList.add('active');
 
-            // Serve para construir e "injetar" o novo texto e imagem dentro do site
             content.innerHTML = `
                 <div class="animate-fadeIn">
-                    <img src="${exp.image}" alt="${exp.company}" class="exp-image" onerror="this.style.display='none'">
+                    <div class="relative w-full h-[180px] sm:h-[200px] rounded-lg overflow-hidden border border-white/10 mb-6 bg-zinc-900 flex items-center justify-center">
+                        <img src="${exp.image}" alt="${exp.company}" class="absolute inset-0 w-full h-full object-cover opacity-50" onerror="this.style.display='none'">
+                        <div class="text-center p-6 z-10 bg-black/50 w-full h-full flex flex-col justify-center items-center rounded-lg">
+                            <i class="fas ${id === 'fde' ? 'fa-network-wired' : id === 'jp' ? 'fa-broadcast-tower' : id === 'orbia' ? 'fa-brain' : 'fa-truck'} text-3xl sm:text-4xl text-[var(--primary-orange)] mb-2"></i>
+                            <h4 class="font-bold text-base sm:text-lg uppercase tracking-wide text-white">${exp.company}</h4>
+                            <p class="text-xs text-gray-400 font-mono mt-1">${exp.period}</p>
+                        </div>
+                    </div>
                     
-                    <h3 class="text-2xl font-black uppercase text-white">${exp.role}</h3>
-                    <p class="text-[var(--itau-orange)] font-bold text-xs mt-1">@ ${exp.company} | ${exp.period}</p>
-                    <p class="text-sm text-gray-400 my-6">${exp.desc}</p>
+                    <h3 class="text-xl sm:text-2xl font-black uppercase text-white">${exp.role}</h3>
+                    <p class="text-[var(--primary-orange)] font-bold text-xs mt-1">@ ${exp.company} | ${exp.period}</p>
+                    <p class="text-xs sm:text-sm text-gray-400 my-6 leading-relaxed">${exp.desc}</p>
                     
-                    <ul class="space-y-4">
+                    <ul class="space-y-3">
                         ${exp.bullets.map(b => `
-                            <li class="flex items-start gap-4 text-xs text-gray-300">
-                                <span class="text-[var(--itau-orange)] mt-1 font-bold">»</span>
-                                <span>${b}</span>
+                            <li class="flex items-start gap-3 text-xs text-gray-300">
+                                <span class="text-[var(--primary-orange)] font-bold">»</span>
+                                <span class="leading-relaxed">${b}</span>
                             </li>
                         `).join('')}
                     </ul>
@@ -390,71 +660,47 @@
         }
 
         /**
-         * Esta função serve para criar o efeito de "texto digitando".
-         * Ela escreve uma letra por vez, espera um pouco, e depois apaga
-         * para escrever a próxima palavra da lista 'phrases'.
+         * Efeito visual de digitação dinâmica no cabeçalho
          */
-        const phrases = ["Sistemas.", "Infraestrutura.", "Dados.", "Soluções."];
+        const phrases = ["Sistemas.", "Infraestrutura.", "Dados.", "Governança.", "Soluções."];
         let i = 0, j = 0, current = "", deleting = false;
         
         function type() {
-            // Serve para saber qual palavra da lista estamos escrevendo agora
             current = phrases[i];
-            
-            // Serve para decidir se vamos adicionar uma letra ou remover uma letra
             const text = deleting ? current.substring(0, j--) : current.substring(0, j++);
             document.getElementById('typing-text').textContent = text;
             
-            // Serve para controlar o tempo entre escrever e apagar
             if (!deleting && j > current.length) { 
                 deleting = true; 
-                setTimeout(type, 1800); // Espera 1.8 segundos quando a palavra está completa
+                setTimeout(type, 1800); 
             } else if (deleting && j === 0) { 
                 deleting = false; 
-                i = (i + 1) % phrases.length; // Passa para a próxima palavra da lista
+                i = (i + 1) % phrases.length; 
                 setTimeout(type, 400); 
             } else {
-                // Controla a velocidade da digitação
                 setTimeout(type, deleting ? 40 : 120);
             }
         }
 
         /**
-         * Esta função serve para fazer os elementos do site "aparecerem" conforme você desce a página.
-         * Ela verifica se o bloco já está visível na tela e, se estiver, aciona a animação de subida.
+         * Monitorador de animação de scroll (Scroll Reveal)
          */
         function reveal() {
             document.querySelectorAll('.scroll-reveal').forEach(el => {
-                // Serve para medir a distância do elemento até o topo da janela
                 const rect = el.getBoundingClientRect();
-                // Se o elemento estiver aparecendo na tela, adiciona a classe que faz a mágica
                 if (rect.top < window.innerHeight - 80) {
                     el.classList.add('active');
                 }
             });
         }
 
-        /**
-         * Estes comandos servem para ligar as funções assim que o site abre.
-         */
-        // Serve para vigiar o movimento da barra de rolagem
         window.addEventListener('scroll', reveal);
         
-        // Serve para iniciar as animações e o conteúdo inicial assim que o navegador terminar de carregar
         window.onload = () => { 
-            showExp('jp'); 
+            showExp('fde'); // Inicializa na aba ativa da FDE (fevereiro de 2026)
             type();        
             reveal();      
         };
     </script>
-
-    <style>
-        .animate-fadeIn { animation: fadeIn 0.4s ease-out; }
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateX(10px); } 
-            to { opacity: 1; transform: translateX(0); } 
-        }
-    </style>
 </body>
 </html>
-
